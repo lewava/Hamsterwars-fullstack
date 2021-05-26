@@ -1,0 +1,62 @@
+.hamster-info-container {
+  background-color: #f8dfff;
+  border-radius: 15px;
+  width: 15%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: fixed;
+  box-shadow: 0px 4px 5px 5px rgba(0, 0, 0, 0.25);
+}
+
+.hamster-info-top {
+  background-color: #a892ee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.name-container {
+  flex: 5;
+}
+
+.hamster-info-top h1 {
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  color: white;
+  font-size: 1.8rem;
+  text-shadow: 0px 4px 15px #40005d;
+  text-align: center;
+  margin-left: 18%;
+}
+
+.hamster-info-top img {
+  width: 50px;
+}
+
+.hamster-info-top img:hover {
+  cursor: pointer;
+}
+
+.text-container {
+  padding: 0.8em;
+}
+
+.text-box {
+  margin-bottom: 0.7em;
+}
+
+.hamster-info-container p {
+  display: inline;
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  color: #1f1f1f;
+}
+
+.hamster-info-container span {
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  font-size: 1.25rem;
+}

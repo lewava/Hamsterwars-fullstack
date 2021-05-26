@@ -1,0 +1,22 @@
+.header-container {
+  display: flex;
+  justify-content: center;
+  padding: 1.5em;
+}
+
+.header {
+  background: #a892ee;
+  width: 70%;
+  border-radius: 15px;
+  padding: 0.5em 0;
+  box-shadow: 0px 4px 5px 5px rgba(0, 0, 0, 0.25);
+}
+
+.header h1 {
+  font-family: "Poller One", cursive;
+  color: white;
+  text-transform: uppercase;
+  font-size: 5rem;
+  text-align: center;
+  text-shadow: 0px 4px 15px #40005d;
+}
