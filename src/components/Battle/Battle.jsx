@@ -37,6 +37,30 @@ const Battle = () => {
     setShowModal(true);
   };
 
+  async function vote(winner) {
+    let winnerId = "";
+    let loserId = "";
+
+    if (winner === 1) {
+      winnerId = hamsterOne.id;
+      loserId = hamsterTwo.id;
+    } else if (winner === 2) {
+      winnerId = hamsterTwo.id;
+      loserId = hamsterOne.id;
+    }
+
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        winnerId: winnerId,
+        loserId: loserId,
+      }),
+    };
+
+    await fetch("matches", requestOptions);
+  }
+
   return (
     <div className="battle-container">
       <div className="battle-img-container hamster-1">
@@ -51,7 +75,7 @@ const Battle = () => {
             onClick={() => toggleModal(1)}
           />
         )}
-        <button>Vote</button>
+        <button onClick={() => vote(1)}>Vote</button>
       </div>
       <img className="vs-img" src={vsImg} alt="VS img" />
       <div className="battle-img-container  hamster-2">
@@ -66,7 +90,7 @@ const Battle = () => {
             onClick={() => toggleModal(2)}
           />
         )}
-        <button>Vote</button>
+        <button onClick={() => vote(2)}>Vote</button>
       </div>
       {showModal && (
         <InfoModal
