@@ -57,3 +57,8 @@
   width: 7%;
   transform: rotate(-10deg);
 }
+
+.loading {
+  color: #fff;
+  margin-bottom: 5em;
+}

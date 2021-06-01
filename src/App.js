@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./components/Home";
-import Battle from "./components/Battle";
+import Battle from "./components/Battle/Battle";
 import Gallery from "./components/Gallery";
 import Stats from "./components/Stats";
 import History from "./components/History";
