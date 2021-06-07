@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Header from "./components/Header";
-import Home from "./components/Home";
+import Home from "./components/Start/Home";
 import Battle from "./components/Battle/Battle";
-import Gallery from "./components/Gallery";
-import Stats from "./components/Stats";
-import History from "./components/History";
+import Gallery from "./components/Gallery/Gallery";
+import Stats from "./components/Stats/Stats";
+import History from "./components/History/History";
 import "./App.css";
 
 function App() {
