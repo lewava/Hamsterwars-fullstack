@@ -16,7 +16,7 @@ const InfoModal = (props) => {
           <img
             src={closeButton}
             alt="Close Button"
-            onClick={props.onHideModal}
+            onClick={props.onCloseInfoModal}
           />
         </div>
       </div>
@@ -36,7 +36,7 @@ const InfoModal = (props) => {
           </div>
         ) : (
           <div className="text-box">
-            <span>Age:</span> <p>{props.onHamsterTwo.loves}</p>
+            <span>Loves:</span> <p>{props.onHamsterTwo.loves}</p>
           </div>
         )}
         {props.onHamster === 1 ? (

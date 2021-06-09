@@ -1,0 +1,102 @@
+.gallery-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.gallery-img-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3em;
+}
+
+.gallery-arrow {
+  width: 80px;
+  margin-top: -15em;
+}
+
+.gallery-arrow:hover {
+  cursor: pointer;
+}
+
+.box-container {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gallery-img {
+  border: 3px solid #a892ee;
+  border-radius: 15px;
+  padding: 1em;
+}
+
+.gallery-img:hover {
+  cursor: pointer;
+}
+
+.img-one {
+  width: 250px;
+  height: 200px;
+  align-self: flex-start;
+}
+
+.middle-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.middle-box h1 {
+  font-family: "Poller One", cursive;
+  text-transform: uppercase;
+  color: #a892ee;
+}
+
+.img-two {
+  width: 400px;
+  height: 280px;
+  margin: 0.5em 3em 0 3em;
+}
+
+.img-three {
+  width: 250px;
+  height: 200px;
+  align-self: flex-start;
+}
+
+.gallery-button {
+  font-family: "Poller One", cursive;
+  text-transform: uppercase;
+  border-radius: 40px;
+  padding: 0.8em 0 0.8em 0;
+  width: 12em;
+  margin: 2em 0 3em 0;
+}
+
+.gallery-button:hover {
+  cursor: pointer;
+}
+
+.gallery-add {
+  background-color: #40005d;
+  color: white;
+  border: 3px solid white;
+  margin-right: 0.7em;
+}
+
+.gallery-remove {
+  background-color: #f8dfff;
+  color: #40005d;
+  border: 3px solid #40005d;
+  margin-left: 0.7em;
+}
+
+.gallery-loading {
+  margin-top: 5em;
+}

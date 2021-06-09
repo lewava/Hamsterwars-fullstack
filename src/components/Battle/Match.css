@@ -37,7 +37,8 @@
 }
 
 .hamster-img {
-  width: 100%;
+  width: 350px;
+  height: 250px;
   box-shadow: 3px 5px 30px 20px #a892ee;
 }
 

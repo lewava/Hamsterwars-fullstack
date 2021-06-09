@@ -108,7 +108,7 @@ const Match = (props) => {
     }
   }, [winner, loser, props]);
 
-  const closeModal = () => {
+  const closeInfoModal = () => {
     setShowInfoModal(false);
   };
 
@@ -150,7 +150,7 @@ const Match = (props) => {
       </div>
       {showInfoModal && (
         <InfoModal
-          onHideModal={closeModal}
+          onCloseInfoModal={closeInfoModal}
           onHamster={selectedHamster}
           onHamsterOne={hamsterOne}
           onHamsterTwo={hamsterTwo}
