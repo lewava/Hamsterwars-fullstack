@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import leftArrow from "../../assets/left-arrow.png";
 import rightArrow from "../../assets/right-arrow.png";
+import MatchHistory from "./MatchHistory";
 import "./Gallery.css";
 
 const Gallery = () => {
@@ -8,7 +9,9 @@ const Gallery = () => {
   const [leftCount, setLeftCount] = useState(0);
   const [middleCount, setMiddleCount] = useState(1);
   const [rightCount, setRightCount] = useState(2);
-  const [showMatches, setShowMatches] = useState(false);
+  const [showMatchHistory, setShowMatchHistory] = useState(false);
+  const [matches, setMatches] = useState([]);
+  const [losers, setLosers] = useState([]);
 
   useEffect(() => {
     const getHamsters = async () => {
@@ -96,74 +99,104 @@ const Gallery = () => {
     }
   };
 
-  const matches = (id) => {
-    console.log(id);
+  const getMatches = async (id) => {
+    try {
+      const response = await fetch(`matchWinners/${id}`);
+      const data = await response.json();
+      setMatches(data);
+      setShowMatchHistory(true);
+    } catch (error) {
+      alert(`This hamster hasn't won any matches`);
+    }
   };
+
+  useEffect(() => {
+    const getLosers = async () => {
+      let l = [];
+      if (matches) {
+        for (let i = 0; i < matches.length; i++) {
+          const response = await fetch(`hamsters/${matches[i].loserId}`);
+          const data = await response.json();
+          l.push(data);
+        }
+      } else return;
+      setLosers(l);
+    };
+    getLosers();
+  }, [matches]);
 
   return (
     <div className="gallery-container">
-      {hamsters ? (
-        <div className="gallery-img-container">
-          <img
-            src={leftArrow}
-            alt="left-arrow"
-            className="gallery-arrow"
-            onClick={leftClick}
-          />
-
-          <div className="box-container">
-            <img
-              src={
-                require(`../../assets/${hamsters[leftCount].imgName}`).default
-              }
-              alt="hamster"
-              title="Click to see which hamsters this hamster has defeated."
-              className="img-one gallery-img"
-              onClick={() => matches(hamsters[leftCount].id)}
-            />
-
-            <div className="middle-box">
-              <h1>{hamsters[middleCount].name}</h1>
-              <img
-                src={
-                  require(`../../assets/${hamsters[middleCount].imgName}`)
-                    .default
-                }
-                alt="hamster"
-                title="Click to see which hamsters this hamster has defeated."
-                className="img-two gallery-img"
-                onClick={() => matches(hamsters[middleCount].id)}
-              />
-              <div>
-                <button className="gallery-add gallery-button">
-                  Add <br /> Hamster
-                </button>
-                <button className="gallery-remove gallery-button">
-                  Remove <br /> Hamster
-                </button>
-              </div>
-            </div>
-
-            <img
-              src={
-                require(`../../assets/${hamsters[rightCount].imgName}`).default
-              }
-              alt="hamster"
-              title="Click to see which hamsters this hamster has defeated."
-              className="img-three gallery-img"
-              onClick={() => matches(hamsters[rightCount].id)}
-            />
-          </div>
-
-          <img
-            src={rightArrow}
-            alt="right-arrow"
-            className="gallery-arrow"
-            onClick={rightClick}
-          />
-        </div>
+      {showMatchHistory ? (
+        <MatchHistory onLosers={losers} />
       ) : (
-        <h1 className="gallery-loading loading">Loading...</h1>
+        <>
+          {hamsters ? (
+            <div className="gallery-img-container">
+              <img
+                src={leftArrow}
+                alt="left-arrow"
+                className="gallery-arrow"
+                onClick={leftClick}
+              />
+
+              <div className="box-container">
+                <img
+                  src={
+                    require(`../../assets/${hamsters[leftCount].imgName}`)
+                      .default
+                  }
+                  alt="hamster"
+                  title="Click to see which hamsters this hamster has defeated."
+                  className="img-one gallery-img"
+                  onClick={() => getMatches(hamsters[leftCount].id)}
+                />
+
+                <div className="middle-box">
+                  <h1>{hamsters[middleCount].name}</h1>
+                  <img
+                    src={
+                      require(`../../assets/${hamsters[middleCount].imgName}`)
+                        .default
+                    }
+                    alt="hamster"
+                    title="Click to see which hamsters this hamster has defeated."
+                    className="img-two gallery-img"
+                    onClick={() => getMatches(hamsters[middleCount].id)}
+                  />
+                  <div>
+                    <button className="gallery-add gallery-button">
+                      Add <br /> Hamster
+                    </button>
+                    <button className="gallery-remove gallery-button">
+                      Remove <br /> Hamster
+                    </button>
+                  </div>
+                </div>
+
+                <img
+                  src={
+                    require(`../../assets/${hamsters[rightCount].imgName}`)
+                      .default
+                  }
+                  alt="hamster"
+                  title="Click to see which hamsters this hamster has defeated."
+                  className="img-three gallery-img"
+                  onClick={() => getMatches(hamsters[rightCount].id)}
+                />
+              </div>
+
+              <img
+                src={rightArrow}
+                alt="right-arrow"
+                className="gallery-arrow"
+                onClick={rightClick}
+              />
+            </div>
+          ) : (
+            <h1 className="gallery-loading loading">Loading...</h1>
+          )}
+        </>
       )}
     </div>
   );

@@ -56,7 +56,9 @@ router.get("/:id", async (req, res) => {
   }
 
   const data = docRef.data();
-  res.send(data);
+  const id = { id: docRef.id };
+  const dataWithId = { ...data, ...id };
+  res.send(dataWithId);
 });
 
 router.post("/", async (req, res) => {
