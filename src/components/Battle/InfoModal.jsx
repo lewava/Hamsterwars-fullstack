@@ -1,5 +1,5 @@
 import "./InfoModal.css";
-import closeButton from "../../assets/closeButton.png";
+import closeButton from "../../assets/close-button.png";
 
 const InfoModal = (props) => {
   return (

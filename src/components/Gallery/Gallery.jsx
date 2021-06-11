@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import leftArrow from "../../assets/left-arrow.png";
 import rightArrow from "../../assets/right-arrow.png";
 import MatchHistory from "./MatchHistory";
+import RemoveModal from "./RemoveModal";
 import "./Gallery.css";
 
 const Gallery = () => {
@@ -10,8 +11,11 @@ const Gallery = () => {
   const [middleCount, setMiddleCount] = useState(1);
   const [rightCount, setRightCount] = useState(2);
   const [showMatchHistory, setShowMatchHistory] = useState(false);
+  const [selectedHamster, setSelectedHamster] = useState(null);
   const [matches, setMatches] = useState([]);
   const [losers, setLosers] = useState([]);
+  const [showRemoveModal, setShowRemoveModal] = useState(false);
+  const [removedHamster, setRemovedHamster] = useState(null);
 
   useEffect(() => {
     const getHamsters = async () => {
@@ -99,11 +103,12 @@ const Gallery = () => {
     }
   };
 
-  const getMatches = async (id) => {
+  const getMatches = async (hamster) => {
     try {
-      const response = await fetch(`matchWinners/${id}`);
+      const response = await fetch(`matchWinners/${hamster.id}`);
       const data = await response.json();
       setMatches(data);
+      setSelectedHamster(hamster);
       setShowMatchHistory(true);
     } catch (error) {
       alert(`This hamster hasn't won any matches`);
@@ -125,10 +130,25 @@ const Gallery = () => {
     getLosers();
   }, [matches]);
 
+  const closeMatchHistory = () => {
+    setShowMatchHistory(false);
+  };
+
+  const toggleModal = () => {
+    setShowRemoveModal((prevState) => {
+      return !prevState;
+    });
+    setRemovedHamster(hamsters[middleCount]);
+  };
+
   return (
     <div className="gallery-container">
       {showMatchHistory ? (
-        <MatchHistory onLosers={losers} />
+        <MatchHistory
+          onLosers={losers}
+          onSelectedHamster={selectedHamster}
+          onClose={closeMatchHistory}
+        />
       ) : (
         <>
           {hamsters ? (
@@ -149,7 +169,7 @@ const Gallery = () => {
                   alt="hamster"
                   title="Click to see which hamsters this hamster has defeated."
                   className="img-one gallery-img"
-                  onClick={() => getMatches(hamsters[leftCount].id)}
+                  onClick={() => getMatches(hamsters[leftCount])}
                 />
 
                 <div className="middle-box">
@@ -162,13 +182,16 @@ const Gallery = () => {
                     alt="hamster"
                     title="Click to see which hamsters this hamster has defeated."
                     className="img-two gallery-img"
-                    onClick={() => getMatches(hamsters[middleCount].id)}
+                    onClick={() => getMatches(hamsters[middleCount])}
                   />
                   <div>
                     <button className="gallery-add gallery-button">
                       Add <br /> Hamster
                     </button>
-                    <button className="gallery-remove gallery-button">
+                    <button
+                      className="gallery-remove gallery-button"
+                      onClick={toggleModal}
+                    >
                       Remove <br /> Hamster
                     </button>
                   </div>
@@ -182,7 +205,7 @@ const Gallery = () => {
                   alt="hamster"
                   title="Click to see which hamsters this hamster has defeated."
                   className="img-three gallery-img"
-                  onClick={() => getMatches(hamsters[rightCount].id)}
+                  onClick={() => getMatches(hamsters[rightCount])}
                 />
               </div>
 
@@ -197,6 +220,9 @@ const Gallery = () => {
             <h1 className="gallery-loading loading">Loading...</h1>
           )}
         </>
+      )}
+      {showRemoveModal && (
+        <RemoveModal onHamster={removedHamster} onClose={toggleModal} />
       )}
     </div>
   );

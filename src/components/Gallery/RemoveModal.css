@@ -1,0 +1,57 @@
+.remove-modal-container {
+  display: flex;
+  background-color: #40005d;
+  padding: 1em;
+  border-radius: 15px;
+  border: 3px solid white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: fixed;
+}
+
+.remove-img {
+  width: 200px;
+  height: 150px;
+  border-radius: 25px;
+  border: 3px solid white;
+}
+
+.remove-inner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5em 1em;
+  text-align: center;
+}
+
+.remove-inner-container h1 {
+  color: white;
+  font-size: 1.3rem;
+}
+
+.remove-button {
+  text-transform: uppercase;
+  border-radius: 15px;
+  font-size: 1rem;
+  width: 6em;
+  height: 2.25em;
+  font-weight: bold;
+  font-family: "Poller One", cursive;
+}
+
+.remove-button:hover {
+  cursor: pointer;
+}
+
+.remove-yes {
+  border: 3px solid white;
+  background-color: #40005d;
+  color: white;
+  margin-left: 0.5em;
+}
+
+.remove-no {
+  color: #40005d;
+}
