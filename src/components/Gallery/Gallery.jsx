@@ -3,6 +3,7 @@ import leftArrow from "../../assets/left-arrow.png";
 import rightArrow from "../../assets/right-arrow.png";
 import MatchHistory from "./MatchHistory";
 import RemoveModal from "./RemoveModal";
+import AddHamster from "./AddHamster";
 import "./Gallery.css";
 
 const Gallery = () => {
@@ -16,6 +17,7 @@ const Gallery = () => {
   const [losers, setLosers] = useState([]);
   const [showRemoveModal, setShowRemoveModal] = useState(false);
   const [removedHamster, setRemovedHamster] = useState(null);
+  const [showAddHamster, setShowAddHamster] = useState(false);
 
   useEffect(() => {
     const getHamsters = async () => {
@@ -134,11 +136,17 @@ const Gallery = () => {
     setShowMatchHistory(false);
   };
 
-  const toggleModal = () => {
+  const toggleRemoveModal = () => {
     setShowRemoveModal((prevState) => {
       return !prevState;
     });
     setRemovedHamster(hamsters[middleCount]);
+  };
+
+  const toggleAddModal = () => {
+    setShowAddHamster((prevState) => {
+      return !prevState;
+    });
   };
 
   return (
@@ -185,12 +193,15 @@ const Gallery = () => {
                     onClick={() => getMatches(hamsters[middleCount])}
                   />
                   <div>
-                    <button className="gallery-add gallery-button">
+                    <button
+                      className="gallery-add gallery-button"
+                      onClick={toggleAddModal}
+                    >
                       Add <br /> Hamster
                     </button>
                     <button
                       className="gallery-remove gallery-button"
-                      onClick={toggleModal}
+                      onClick={toggleRemoveModal}
                     >
                       Remove <br /> Hamster
                     </button>
@@ -222,8 +233,9 @@ const Gallery = () => {
         </>
       )}
       {showRemoveModal && (
-        <RemoveModal onHamster={removedHamster} onClose={toggleModal} />
+        <RemoveModal onHamster={removedHamster} onClose={toggleRemoveModal} />
       )}
+      {showAddHamster && <AddHamster onClose={toggleAddModal} />}
     </div>
   );
 };

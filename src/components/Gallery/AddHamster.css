@@ -1,0 +1,87 @@
+.add-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #f8dfff;
+  border-radius: 16px;
+  filter: drop-shadow(0px 4px 10px #1f1f1f);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -45%);
+  position: fixed;
+  box-sizing: border-box;
+}
+
+.add-top-container {
+  background: #40005d;
+  padding: 1.5em;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.add-top-container h1 {
+  font-family: "Poller One", cursive;
+  color: white;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  align-self: flex-end;
+  margin-left: 1em;
+}
+
+.add-top-container img {
+  width: 55px;
+  margin: -1.5em -1.5em 0 1em;
+}
+
+.add-top-container img:hover {
+  cursor: pointer;
+}
+
+.add-input-container {
+  width: 80%;
+  margin-top: 1em;
+}
+
+.add-container label {
+  font-family: "Poller One", cursive;
+  font-weight: bold;
+  color: #40005d;
+}
+
+.add-container input {
+  width: 100%;
+  padding: 1em 0.5em;
+  border: 2px solid #40005d;
+  border-radius: 10px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.add-container button {
+  width: 55%;
+  background: #40005d;
+  font-family: "Poller One", cursive;
+  color: white;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  box-sizing: border-box;
+  padding: 0.6em 0;
+  border-radius: 15px;
+  margin: 0.8em 0;
+  border: 3px solid white;
+}
+
+.add-container button:hover {
+  cursor: pointer;
+}
+
+.invalid {
+  background-color: rgb(255, 36, 36);
+}
+
+.add-container h4 {
+  color: rgb(255, 36, 36);
+}

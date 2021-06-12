@@ -22,7 +22,8 @@ const RemoveModal = (props) => {
       />
       <div className="remove-inner-container">
         <h1>
-          Are you sure you want <br /> to remove {props.onHamster.name}.
+          Are you sure you want <br /> to remove{" "}
+          <span className="remove-name">{props.onHamster.name}</span>.
         </h1>
         <div>
           <button className="remove-no remove-button" onClick={props.onClose}>

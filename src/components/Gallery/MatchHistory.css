@@ -42,3 +42,7 @@
   color: #40005d;
   font-weight: bold;
 }
+
+.gallery-history li {
+  text-transform: capitalize;
+}

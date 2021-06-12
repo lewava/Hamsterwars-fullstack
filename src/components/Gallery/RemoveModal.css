@@ -31,6 +31,10 @@
   font-size: 1.3rem;
 }
 
+.remove-name {
+  text-transform: capitalize;
+}
+
 .remove-button {
   text-transform: uppercase;
   border-radius: 15px;
