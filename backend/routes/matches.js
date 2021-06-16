@@ -13,7 +13,12 @@ router.get("/", async (req, res) => {
   }
 
   let matchList = [];
-  snapshot.forEach((doc) => matchList.push(doc.data()));
+  snapshot.forEach((doc) => {
+    const data = doc.data();
+    const id = { id: doc.id };
+    const dataWithId = { ...data, ...id };
+    matchList.push(dataWithId);
+  });
 
   res.send(matchList);
 });

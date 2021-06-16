@@ -21,15 +21,17 @@
 .error-container button {
   color: #a892ee;
   border-radius: 50px;
-  width: 10em;
-  height: 3em;
+  width: 8em;
+  height: 2.8em;
   border: 3px solid #a892ee;
   background-color: #373737;
   font-size: 1.5rem;
   font-weight: bold;
   margin-top: 1em;
+  transition: transform 0.5s ease-in-out;
 }
 
 .error-container button:hover {
   cursor: pointer;
+  transform: scale(1.2);
 }

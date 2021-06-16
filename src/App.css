@@ -9,8 +9,8 @@ nav {
 }
 
 nav :nth-child(odd) {
-    align-self: flex-start;
-  }
+  align-self: flex-start;
+}
 
 nav :nth-child(even) {
   align-self: flex-end;
@@ -31,4 +31,34 @@ nav a {
 
 nav a:hover {
   transform: scale(1.2);
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-img {
+  width: 100px;
+  height: 100px;
+  animation: rotation 2s infinite linear;
+  margin-top: 10em;
+  margin-right: 2em;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+.loading-text {
+  font-size: 2rem;
+  color: #a892ee;
+  margin-top: 0.5em;
 }

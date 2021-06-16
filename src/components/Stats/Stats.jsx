@@ -63,7 +63,14 @@ const Stats = () => {
           </h2>
         </div>
       ) : (
-        <img className="loading" src={LoadingHamster} alt="hamster icon" />
+        <div className="loading-container">
+          <img
+            className="loading-img"
+            src={LoadingHamster}
+            alt="hamster icon"
+          />
+          <h3 className="loading-text">Loading...</h3>
+        </div>
       )}
     </div>
   );

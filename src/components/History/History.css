@@ -1,0 +1,59 @@
+.history-img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.history-card-container {
+  display: grid;
+  grid-template-columns: repeat(4, 15em);
+  justify-content: center;
+  gap: 3em;
+  margin-top: 5em;
+}
+
+.history-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #40005d;
+  border-radius: 15px;
+  box-shadow: 3px 5px 15px 5px #a892ee;
+  padding: 2em 2em 0 2em;
+  font-family: "Poller One", cursive;
+  color: white;
+}
+
+.history-card h2 {
+  font-size: 2rem;
+}
+
+.history-card h1 {
+  font-size: 3rem;
+  text-transform: uppercase;
+  margin: 0.5em 0;
+}
+
+.history-card h3 {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.5rem;
+  text-transform: capitalize;
+  margin-top: 0.25em;
+}
+
+.history-card h5 {
+  margin: 1em 0 0.5em 0;
+}
+
+.history-card h5:hover {
+  cursor: pointer;
+}
+
+.history-card img {
+  width: 150px;
+  height: 150px;
+  border-radius: 15px;
+  border: 3px solid white;
+  margin-top: 0.5em;
+}
