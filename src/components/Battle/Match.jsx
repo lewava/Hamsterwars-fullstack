@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import InfoModal from "./InfoModal";
 import vsImg from "../../assets/vs.png";
+import LoadingHamster from "../../assets/loading-hamster.png";
 import "./Match.css";
 
 const Match = (props) => {
@@ -118,45 +119,43 @@ const Match = (props) => {
   };
 
   return (
-    <div className="Match-container">
-      <div className="Match-img-container hamster-1">
-        {!hamsterOne ? (
-          <h1 className="loading">Loading...</h1>
-        ) : (
-          <img
-            className="hamster-img"
-            src={require(`../../assets/${hamsterOne.imgName}`).default}
-            alt="Hamster one"
-            title="Click for more info about the hamster."
-            onClick={() => toggleModal(1)}
-          />
-        )}
-        <button onClick={() => vote(1)}>Vote</button>
-      </div>
-      <img className="vs-img" src={vsImg} alt="VS img" />
-      <div className="Match-img-container  hamster-2">
-        {!hamsterTwo ? (
-          <h1 className="loading">Loading...</h1>
-        ) : (
-          <img
-            className="hamster-img"
-            src={require(`../../assets/${hamsterTwo.imgName}`).default}
-            alt="Hamster one"
-            title="Click for more info about the hamster."
-            onClick={() => toggleModal(2)}
-          />
-        )}
-        <button onClick={() => vote(2)}>Vote</button>
-      </div>
-      {showInfoModal && (
-        <InfoModal
-          onCloseInfoModal={closeInfoModal}
-          onHamster={selectedHamster}
-          onHamsterOne={hamsterOne}
-          onHamsterTwo={hamsterTwo}
-        />
+    <>
+      {hamsterOne && hamsterTwo ? (
+        <div className="Match-container">
+          <div className="Match-img-container hamster-1">
+            <img
+              className="hamster-img"
+              src={require(`../../assets/${hamsterOne.imgName}`).default}
+              alt="Hamster one"
+              title="Click for more info about the hamster."
+              onClick={() => toggleModal(1)}
+            />
+            <button onClick={() => vote(1)}>Vote</button>
+          </div>
+          <img className="vs-img" src={vsImg} alt="VS img" />
+          <div className="Match-img-container  hamster-2">
+            <img
+              className="hamster-img"
+              src={require(`../../assets/${hamsterTwo.imgName}`).default}
+              alt="Hamster one"
+              title="Click for more info about the hamster."
+              onClick={() => toggleModal(2)}
+            />
+            <button onClick={() => vote(2)}>Vote</button>
+          </div>
+          {showInfoModal && (
+            <InfoModal
+              onCloseInfoModal={closeInfoModal}
+              onHamster={selectedHamster}
+              onHamsterOne={hamsterOne}
+              onHamsterTwo={hamsterTwo}
+            />
+          )}
+        </div>
+      ) : (
+        <img className="loading" src={LoadingHamster} alt="hamster icon" />
       )}
-    </div>
+    </>
   );
 };
 

@@ -4,6 +4,7 @@ import rightArrow from "../../assets/right-arrow.png";
 import MatchHistory from "./MatchHistory";
 import RemoveModal from "./RemoveModal";
 import AddHamster from "./AddHamster";
+import LoadingHamster from "../../assets/loading-hamster.png";
 import "./Gallery.css";
 
 const Gallery = () => {
@@ -228,7 +229,7 @@ const Gallery = () => {
               />
             </div>
           ) : (
-            <h1 className="gallery-loading loading">Loading...</h1>
+            <img className="loading" src={LoadingHamster} alt="hamster icon" />
           )}
         </>
       )}

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import LoadingHamster from "../../assets/loading-hamster.png";
 import "./Stats.css";
 
 const Stats = () => {
@@ -45,21 +46,25 @@ const Stats = () => {
 
   return (
     <div className="stats-container">
-      <div className="stats-inner-container">
-        <h1>Top 5 {!showLosers ? "winners" : "losers"}</h1>
-        <div className="top-five-container">
-          {!showLosers ? renderWinners : renderLosers}
+      {winners.length !== 0 && losers.length !== 0 ? (
+        <div className="stats-inner-container">
+          <h1>Top 5 {!showLosers ? "winners" : "losers"}</h1>
+          <div className="top-five-container">
+            {!showLosers ? renderWinners : renderLosers}
+          </div>
+          <h2
+            onClick={() =>
+              setShowLosers((prevState) => {
+                return !prevState;
+              })
+            }
+          >
+            Show {!showLosers ? "losers" : "winners"}
+          </h2>
         </div>
-        <h2
-          onClick={() =>
-            setShowLosers((prevState) => {
-              return !prevState;
-            })
-          }
-        >
-          Show {!showLosers ? "losers" : "winners"}
-        </h2>
-      </div>
+      ) : (
+        <img className="loading" src={LoadingHamster} alt="hamster icon" />
+      )}
     </div>
   );
 };
