@@ -1,0 +1,35 @@
+.error-container {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-container img {
+  width: 120px;
+  height: 120px;
+  margin-top: 3em;
+}
+
+.error-container h2 {
+  color: #a892ee;
+  text-align: center;
+  margin-top: 0.5em;
+}
+
+.error-container button {
+  color: #a892ee;
+  border-radius: 50px;
+  width: 10em;
+  height: 3em;
+  border: 3px solid #a892ee;
+  background-color: #373737;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 1em;
+}
+
+.error-container button:hover {
+  cursor: pointer;
+}
