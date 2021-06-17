@@ -9,8 +9,8 @@ const RemoveModal = (props) => {
       },
       body: null,
     });
+    props.onGetHamsters();
     props.onClose();
-    window.location.reload();
   };
 
   return (

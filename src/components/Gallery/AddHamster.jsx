@@ -104,8 +104,8 @@ const AddHamster = (props) => {
           games: 0,
         }),
       });
+      props.onGetHamsters();
       props.onClose();
-      window.location.reload();
     } else return;
   };
 

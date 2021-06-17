@@ -21,14 +21,15 @@ const Gallery = () => {
   const [showAddHamster, setShowAddHamster] = useState(false);
 
   useEffect(() => {
-    const getHamsters = async () => {
-      const response = await fetch("hamsters");
-      const data = await response.json();
-
-      setHamsters(data);
-    };
     getHamsters();
   }, []);
+
+  const getHamsters = async () => {
+    const response = await fetch("hamsters");
+    const data = await response.json();
+
+    setHamsters(data);
+  };
 
   const leftClick = () => {
     if (leftCount === 0) {
@@ -241,9 +242,15 @@ const Gallery = () => {
         </>
       )}
       {showRemoveModal && (
-        <RemoveModal onHamster={removedHamster} onClose={toggleRemoveModal} />
+        <RemoveModal
+          onHamster={removedHamster}
+          onClose={toggleRemoveModal}
+          onGetHamsters={getHamsters}
+        />
       )}
-      {showAddHamster && <AddHamster onClose={toggleAddModal} />}
+      {showAddHamster && (
+        <AddHamster onClose={toggleAddModal} onGetHamsters={getHamsters} />
+      )}
     </div>
   );
 };

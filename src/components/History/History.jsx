@@ -7,24 +7,26 @@ const History = () => {
   const [hamsters, setHamsters] = useState(null);
 
   useEffect(() => {
-    const getMatches = async () => {
-      const response = await fetch("matches");
-      const data = await response.json();
-      setMatches(data);
-    };
-
-    const getHamsters = async () => {
-      const response = await fetch("hamsters");
-      const data = await response.json();
-      setHamsters(data);
-    };
     getMatches();
     getHamsters();
   }, []);
 
+  const getMatches = async () => {
+    const response = await fetch("matches");
+    const data = await response.json();
+    setMatches(data);
+  };
+
+  const getHamsters = async () => {
+    const response = await fetch("hamsters");
+    const data = await response.json();
+    setHamsters(data);
+  };
+
   const deleteMatch = async (matchId) => {
     await fetch(`matches/${matchId}`, { method: "DELETE" });
-    window.location.reload();
+    getMatches();
+    getHamsters();
   };
 
   const deleteMatchHandler = (matchId) => {
