@@ -1,6 +1,6 @@
 # Projekt
 
-Det här är ett fullstack projekt för kursen effektiv frontendutveckling på IT-Högskolan. När jag har utvecklat denna app har jag använt mig av Node.js för mitt backend REST api och React för min frontend. Sedan har jag använt mig av Heroku för att publicera appen.
+Det här är ett fullstack projekt för kursen effektiv frontendutveckling på IT-Högskolan. När jag har utvecklat denna app har jag använt mig av Node.js för mitt backend REST api och React för min frontend. Sedan har jag använt mig av Heroku för att publicera appen på (https://hamsterwars1337.herokuapp.com/)
 
 # Levelups
 
