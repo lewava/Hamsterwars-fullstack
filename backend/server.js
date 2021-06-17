@@ -9,7 +9,7 @@ const winners = require("./routes/winners.js");
 const losers = require("./routes/losers.js");
 
 const PORT = process.env.PORT || 2000;
-const publicFolder = path.join(__dirname, "public");
+const publicFolder = path.join(__dirname, "../build");
 
 app.use((req, res, next) => {
   console.log(`${req.method} ${req.url}`, req.params);
