@@ -2,15 +2,13 @@ import "./RemoveModal.css";
 
 const RemoveModal = (props) => {
   const deleteHamster = async () => {
-    await fetch(`hamsters/${props.onHamster.id}`, {
-      method: "DELETE",
-      headers: {
-        "content-Type": "application/json",
-      },
-      body: null,
-    });
-    props.onGetHamsters();
+    await fetch(`hamsters/${props.onHamster.id}`, { method: "DELETE" });
+    getHamsters();
     props.onClose();
+  };
+
+  const getHamsters = () => {
+    props.onGetHamsters();
   };
 
   return (
