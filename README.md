@@ -4,7 +4,7 @@ Det här är ett fullstack projekt för kursen effektiv frontendutveckling på I
 
 # Levelups
 
-Jag har gjort level up 1 dvs andvänt mig av animationer på flera ställen. Det skulle också vara kul att få lite feedback på galleriet då jag gjorde ett bildspel istället för en grid.
+Jag har gjort level up 1 dvs använt mig av animationer på flera ställen. Det skulle också vara kul att få lite feedback på galleriet då jag gjorde ett bildspel istället för en grid.
 
 # För att starta backend:
 
