@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import leftArrow from "../../assets/left-arrow.png";
-import rightArrow from "../../assets/right-arrow.png";
 import MatchHistory from "./MatchHistory";
 import RemoveModal from "./RemoveModal";
 import AddHamster from "./AddHamster";
@@ -9,9 +7,6 @@ import "./Gallery.css";
 
 const Gallery = () => {
   const [hamsters, setHamsters] = useState(null);
-  const [leftCount, setLeftCount] = useState(0);
-  const [middleCount, setMiddleCount] = useState(1);
-  const [rightCount, setRightCount] = useState(2);
   const [showMatchHistory, setShowMatchHistory] = useState(false);
   const [selectedHamster, setSelectedHamster] = useState(null);
   const [matches, setMatches] = useState([]);
@@ -29,82 +24,6 @@ const Gallery = () => {
     const data = await response.json();
 
     setHamsters(data);
-  };
-
-  const leftClick = () => {
-    if (leftCount === 0) {
-      setLeftCount(hamsters.length - 1);
-      setMiddleCount((prevState) => {
-        return prevState - 1;
-      });
-      setRightCount((prevState) => {
-        return prevState - 1;
-      });
-    } else if (middleCount === 0) {
-      setLeftCount((prevState) => {
-        return prevState - 1;
-      });
-      setMiddleCount(hamsters.length - 1);
-      setRightCount((prevState) => {
-        return prevState - 1;
-      });
-    } else if (rightCount === 0) {
-      setLeftCount((prevState) => {
-        return prevState - 1;
-      });
-      setMiddleCount((prevState) => {
-        return prevState - 1;
-      });
-      setRightCount(hamsters.length - 1);
-    } else {
-      setLeftCount((prevState) => {
-        return prevState - 1;
-      });
-      setMiddleCount((prevState) => {
-        return prevState - 1;
-      });
-      setRightCount((prevState) => {
-        return prevState - 1;
-      });
-    }
-  };
-
-  const rightClick = () => {
-    if (rightCount === hamsters.length - 1) {
-      setRightCount(0);
-      setMiddleCount((prevState) => {
-        return prevState + 1;
-      });
-      setLeftCount((prevState) => {
-        return prevState + 1;
-      });
-    } else if (middleCount === hamsters.length - 1) {
-      setRightCount((prevState) => {
-        return prevState + 1;
-      });
-      setMiddleCount(0);
-      setLeftCount((prevState) => {
-        return prevState + 1;
-      });
-    } else if (leftCount === hamsters.length - 1) {
-      setRightCount((prevState) => {
-        return prevState + 1;
-      });
-      setMiddleCount((prevState) => {
-        return prevState + 1;
-      });
-      setLeftCount(0);
-    } else {
-      setRightCount((prevState) => {
-        return prevState + 1;
-      });
-      setMiddleCount((prevState) => {
-        return prevState + 1;
-      });
-      setLeftCount((prevState) => {
-        return prevState + 1;
-      });
-    }
   };
 
   const getMatches = async (hamster) => {
@@ -138,11 +57,11 @@ const Gallery = () => {
     setShowMatchHistory(false);
   };
 
-  const toggleRemoveModal = () => {
+  const toggleRemoveModal = (hamster) => {
     setShowRemoveModal((prevState) => {
       return !prevState;
     });
-    setRemovedHamster(hamsters[middleCount]);
+    setRemovedHamster(hamster);
   };
 
   const toggleAddModal = () => {
@@ -162,72 +81,35 @@ const Gallery = () => {
       ) : (
         <>
           {hamsters ? (
-            <div className="gallery-img-container">
-              <img
-                src={leftArrow}
-                alt="left-arrow"
-                className="gallery-arrow"
-                onClick={leftClick}
-              />
-
-              <div className="box-container">
-                <img
-                  src={
-                    require(`../../assets/${hamsters[leftCount].imgName}`)
-                      .default
-                  }
-                  alt="hamster"
-                  title="Click to see which hamsters this hamster has defeated."
-                  className="img-one gallery-img"
-                  onClick={() => getMatches(hamsters[leftCount])}
-                />
-
-                <div className="middle-box">
-                  <h1>{hamsters[middleCount].name}</h1>
-                  <img
-                    src={
-                      require(`../../assets/${hamsters[middleCount].imgName}`)
-                        .default
-                    }
-                    alt="hamster"
-                    title="Click to see which hamsters this hamster has defeated."
-                    className="img-two gallery-img"
-                    onClick={() => getMatches(hamsters[middleCount])}
-                  />
-                  <div>
-                    <button
-                      className="gallery-add gallery-button"
-                      onClick={toggleAddModal}
-                    >
-                      Add <br /> Hamster
-                    </button>
-                    <button
-                      className="gallery-remove gallery-button"
-                      onClick={toggleRemoveModal}
-                    >
-                      Remove <br /> Hamster
-                    </button>
+            <div className="grid-container">
+              {hamsters.map((hamster) => {
+                return (
+                  <div className="box" key={hamster.id}>
+                    <h1>{hamster.name}</h1>
+                    <img
+                      src={require(`../../assets/${hamster.imgName}`).default}
+                      alt="hamster"
+                      title="Click to see which hamsters this hamster has defeated."
+                      className="gallery-img"
+                      onClick={() => getMatches(hamster)}
+                    />
+                    <div className="gallery-button-container">
+                      <button
+                        className="gallery-add gallery-button"
+                        onClick={toggleAddModal}
+                      >
+                        Add <br /> Hamster
+                      </button>
+                      <button
+                        className="gallery-remove gallery-button"
+                        onClick={() => toggleRemoveModal(hamster)}
+                      >
+                        Remove <br /> Hamster
+                      </button>
+                    </div>
                   </div>
-                </div>
-
-                <img
-                  src={
-                    require(`../../assets/${hamsters[rightCount].imgName}`)
-                      .default
-                  }
-                  alt="hamster"
-                  title="Click to see which hamsters this hamster has defeated."
-                  className="img-three gallery-img"
-                  onClick={() => getMatches(hamsters[rightCount])}
-                />
-              </div>
-
-              <img
-                src={rightArrow}
-                alt="right-arrow"
-                className="gallery-arrow"
-                onClick={rightClick}
-              />
+                );
+              })}
             </div>
           ) : (
             <div className="loading-container">
@@ -241,6 +123,7 @@ const Gallery = () => {
           )}
         </>
       )}
+
       {showRemoveModal && (
         <RemoveModal
           onHamster={removedHamster}
